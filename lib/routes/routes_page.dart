@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
         title: 'Clother App',
+        theme: ThemeData(primarySwatch: Colors.green),
         home: FutureBuilder(
           future: null,
           builder: (context, snapshot) {
