@@ -1,17 +1,18 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
-import 'package:dothes_app/users/authentication/signup_sreen.dart';
+import 'package:dothes_app/users/authentication/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SingUpScreen extends StatefulWidget {
+  const SingUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SingUpScreen> createState() => _SingUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SingUpScreenState extends State<SingUpScreen> {
   var fromKey = GlobalKey<FormState>();
+  var nameController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var isObsecure = true.obs;
@@ -31,18 +32,18 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 8),
               child: Column(
                 children: [
-                  //login screen header
+                  //signup screen sing-up header
                   Form(
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       height: 285,
                       child: Image.asset(
-                        'images/logo.png',
+                        'images/register.png',
                       ),
                     ),
                   ),
                   SizedBox(height: 23),
-                  //login screen sing-in form
+                  //signup screen sing-up form
                   Container(
                     decoration: BoxDecoration(
                       color: Color.fromARGB(71, 255, 255, 255),
@@ -58,12 +59,57 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     child: Column(
                       children: [
-                        //email-password-login button
+                        //name-email-password-login button
                         Form(
                           key: fromKey,
                           child: Column(
                             children: [
+                              //name
+                              TextFormField(
+                                controller: nameController,
+                                validator: (val) =>
+                                    val == "" ? "Please write name" : null,
+                                decoration: InputDecoration(
+                                  prefixIcon: const Icon(
+                                    Icons.person,
+                                    color: Color.fromRGBO(0, 255, 187, 100),
+                                  ),
+                                  hintText: "name...",
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                      borderSide: const BorderSide(
+                                        color: Colors.white60,
+                                      )),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: const BorderSide(
+                                      color: Colors.white60,
+                                    ),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: const BorderSide(
+                                      color: Colors.white60,
+                                    ),
+                                  ),
+                                  disabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: const BorderSide(
+                                      color: Colors.white60,
+                                    ),
+                                  ),
+                                  contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 14,
+                                    vertical: 6,
+                                  ),
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                ),
+                              ),
+                              
+                              SizedBox(height: 18),
                               //email
+
                               TextFormField(
                                 controller: emailController,
                                 validator: (val) =>
@@ -180,7 +226,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       horizontal: 28,
                                     ),
                                     child: Text(
-                                      "Login",
+                                      "SignUp",
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 18,
@@ -194,47 +240,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         //dont have an account button - button
 
-                        SizedBox(height: 16),
-
+                        const SizedBox(height: 16),
+                          //already have account -button
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
-                              "Don' t have an Account?",
+                              "Already have an Account?",
                             ),
                             TextButton(
                               onPressed: () {
-                                Get.to(SingUpScreen());
+                                Get.to(LoginScreen());
                               },
                               child: const Text(
-                                "SignUp Here",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.blueAccent,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        //admin you admin - button
-
-                        const Text(
-                          "Or",
-                          style: TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text("Are you an Admin? "),
-                            TextButton(
-                              onPressed: () {},
-                              child: const Text(
-                                "Click Here",
+                                "Login Here",
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.blueAccent,
