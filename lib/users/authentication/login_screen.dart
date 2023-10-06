@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 23,
+                    height: 23
                   ),
                   //login screen sing-in form
                   Container(
@@ -59,6 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     child: Column(
                       children: [
+                        //email-password-login button
                         Form(
                           key: fromKey,
                           child: Column(
@@ -191,6 +192,55 @@ class _LoginScreenState extends State<LoginScreen> {
                               )
                             ],
                           ),
+                        ),
+                        //dont have an account button - button
+
+                        SizedBox(height: 16),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "Don' t have an Account?",
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: const Text(
+                                "SignUp Here",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.blueAccent,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        //admin you admin - button
+
+                        const Text(
+                          "Or",
+                          style: TextStyle(
+                            color: Colors.green,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text("Are you an Admin? "),
+                            TextButton(
+                              onPressed: () {},
+                              child: const Text(
+                                "Click Here",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.blueAccent,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ],
                     ),
